@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QColor, QPainter, QBrush
-from PyQt5.QtCore import QVariantAnimation, QEasingCurve, Qt, QTimer, pyqtSlot
+from PyQt5.QtCore import QVariantAnimation, QVariant, QEasingCurve, Qt, QTimer, pyqtSlot
 import time
 
 
@@ -60,7 +60,7 @@ class WaitingDotsWidget2(QWidget):
                     print(err)
                     self.dotsAnimations[i][j].finished.connect(self.dotsAnimations[i][j-(self.dotsAmount-1)].start)
 
-    @pyqtSlot()
+    @pyqtSlot(QVariant)
     def updateDotsPosition(self, position):
         self.dotsPosition = [position, 0]
         self.print(self.sender())
@@ -81,8 +81,8 @@ class WaitingDotsWidget2(QWidget):
                 painter.setBrush(QBrush(color, Qt.SolidPattern))
                 painter.drawEllipse(position[0], position[1], self.dotsRadius, self.dotsRadius)
 
-            painter.restore()
-
+                painter.restore()
+                del painter
 
 
 

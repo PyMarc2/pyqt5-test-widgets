@@ -8,7 +8,7 @@ class Dialog(QDialog):
     def __init__(self, *args, **kwargs):
         QDialog.__init__(self, *args, **kwargs)
         self.resize(500, 500)
-        self.setWindowFlags(Qt.FramelessWindowHint)
+        #self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setLayout(QVBoxLayout())
         self.button = QPushButton()
